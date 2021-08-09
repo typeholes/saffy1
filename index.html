@@ -1,0 +1,40 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  
+</head>
+<body>
+ 
+<div id="app">
+
+
+  <table>
+    <tr>
+      <td>
+        <h1 >coins: {{coins}}</h1> 
+      </td>
+    </tr><tr>
+      <td v-if="rate>=1">
+       rate: {{rate}}
+      </td>
+      <td v-if="acceleration>=1">
+        acceleration: {{acceleration}}
+       </td>
+    </tr>
+    <tr>
+      <td><game-button label="+ 1 coin" :handler="addCoin" cost=0></game-button></td>
+      <td><game-button :label="autoName" :handler="addAuto" :enabled="(coins>=10)" cost=10></game-button></td>
+      <td v-if="rate>0"><game-button label="Auto Rate" :handler="addAcceleration" :enabled="(coins>=100)" cost=100></game-button></td>
+    </tr>
+    <tr>
+      <td><game-button label="Win" :handler="winGame" :enabled="(coins>=10000)" cost=10000></game-button></td>
+    </tr>
+  </table>
+  <h1 v-if="won">YOU WIN!</h1>
+
+</div>
+
+
+  <script src="index.js"></script>
+</body>
+</html>
